@@ -18,7 +18,7 @@ import static jakarta.persistence.GenerationType.AUTO;
 @Table(name="posts")
 @AllArgsConstructor
 @NoArgsConstructor
-public class post {
+public class Post {
     @Id
     @GeneratedValue(strategy = AUTO)
     private long id;
