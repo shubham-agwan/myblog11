@@ -5,7 +5,6 @@ import com.myblog.myblog11.payload.PostDto;
 import com.myblog.myblog11.service.PostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
