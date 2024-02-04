@@ -8,6 +8,7 @@ import com.myblog.myblog11.service.PostService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -69,9 +70,11 @@ public class PostServiceImpl implements PostService {
 
     // fetching all records  and assigning it to the allRecord
     @Override
-    public List<PostDto> getAllPosts(int pageNo, int pageSize) {
+    public List<PostDto> getAllPosts(int pageNo, int pageSize, String sortBy, String sortDir) {
+        //if inserting sortDir is 'ASC' then sort to ascending else descending
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
         //Pageable used for showing limited records to frontend
-        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        Pageable pageable = PageRequest.of(pageNo,pageSize, sort);
         Page<Post> pagePost = postRepository.findAll(pageable);
         List<Post> allRecord = pagePost.getContent();
         // assigining allRecords to the Dto via FUNCTION mapToDto()
