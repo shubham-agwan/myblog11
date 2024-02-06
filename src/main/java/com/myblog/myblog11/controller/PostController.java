@@ -19,7 +19,7 @@ public class PostController {
         this.postService = postService;
     }
 
-    //http://localhost:8080/api/posts
+    //http://localhost:8080/api/posts/create
     @PostMapping("/create")
     public ResponseEntity<PostDto> createPost(@RequestBody PostDto postDto){
         PostDto dto = postService.createPost(postDto);

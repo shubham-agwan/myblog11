@@ -5,6 +5,7 @@ import com.myblog.myblog11.exception.ResourceNotFoundException;
 import com.myblog.myblog11.payload.PostDto;
 import com.myblog.myblog11.repository.PostRepository;
 import com.myblog.myblog11.service.PostService;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,26 +20,35 @@ public class PostServiceImpl implements PostService {
 
     PostRepository postRepository;
 
-    public PostServiceImpl(PostRepository postRepository) {
+    ModelMapper modelMapper;
+
+    public PostServiceImpl(PostRepository postRepository, ModelMapper modelMapper) {
         this.postRepository = postRepository;
+        this.modelMapper =modelMapper;
     }
 
     // this function we created to use again and again to assign values to the PostDto
     public PostDto mapToDto(Post post){
+        PostDto postDto = modelMapper.map(post, PostDto.class);
+        /*//below code is not now needed due to modalMapper does
+        // assigning tasks from one object to another
         PostDto dto = new PostDto();
         dto.setId(post.getId());
         dto.setContent(post.getContent());
         dto.setDescription(post.getDescription());
-        dto.setTitle(post.getTitle());
-        return dto;
+        dto.setTitle(post.getTitle());*/
+        return postDto;
     }
 
     // this function we created to use again and again to assign values to the PostDto
     public Post mapToEntity(PostDto dto){
+        Post post = modelMapper.map(dto, Post.class);
+        /* //below code is not now needed due to modalMapper does
+        // assigning tasks from one object to another
         Post post = new Post();
         post.setContent(dto.getContent());
         post.setDescription(dto.getDescription());
-        post.setTitle(dto.getTitle());
+        post.setTitle(dto.getTitle());*/
         return post;
     }
 
