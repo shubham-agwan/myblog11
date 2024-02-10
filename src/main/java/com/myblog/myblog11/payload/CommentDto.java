@@ -7,4 +7,5 @@ public class CommentDto {
     private long id;
     private String email;
     private String text;
+
 }

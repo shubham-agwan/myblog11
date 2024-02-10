@@ -44,19 +44,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 httpBasic();
     }
 
+    //IMP : below part is not required as we are now not creating hardcoded users
     //existing method from spring security to create user and password
-    @Bean
-    @Override
-     protected  UserDetailsService userDetailsService(){
-         UserDetails user1 =
-                 User.builder().username("shubham").password(passwordEncoder()
-                         .encode("shubham")).roles("USER").build();
-
-        UserDetails user2  =
-                User.builder().username("admin").password(passwordEncoder()
-                        .encode("admin")).roles("ADMIN").build();
-        return new InMemoryUserDetailsManager(user1,user2);
-     }
+//    @Bean
+//    @Override
+//     protected  UserDetailsService userDetailsService(){
+//         UserDetails user1 =
+//                 User.builder().username("shubham").password(passwordEncoder()
+//                         .encode("shubham")).roles("USER").build();
+//
+//        UserDetails user2  =
+//                User.builder().username("admin").password(passwordEncoder()
+//                        .encode("admin")).roles("ADMIN").build();
+//        return new InMemoryUserDetailsManager(user1,user2);
+//     }
 
 
 }
