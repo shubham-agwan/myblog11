@@ -1,15 +1,11 @@
 package com.myblog.myblog11.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.*;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.List;
-
-import static jakarta.persistence.GenerationType.AUTO;
 
 
 //use @data from lambok automatically write getters and setters
